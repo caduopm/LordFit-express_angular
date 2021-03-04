@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-3">
+      <ul *ngIf="users">
+          <li *ngFor="let user of users.data" (click)="showUserInfo(user)"> 
+            <img [src]="user.avatar">
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+          </li>
+        </ul>
+  </div>
+  <!-- <div>
+    <router-outlet></router-outlet>
+  </div> -->
+  <div class="col-9" *ngIf="selectedUser">
+    <div class="info card">
+      <h2>{{ selectedUser.first_name }} {{ selectedUser.last_name }}</h2>
+      <h4>Email:</h4>
+      <p>{{ selectedUser.email }}</p>
+      <h4>Objetivo:</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla mollitia vel labore obcaecati cum dolores libero ab rem velit nam consectetur iste temporibus dignissimos ad quaerat, architecto atque. Delectus, tenetur?</p>
+    </div>
+    <div class="info card">
+      <div id="chartContainerCol"></div>
+    </div>
+  </div>
+  <div class="col-9" *ngIf="!selectedUser">
+    <div class="info card">
+      <h1>Bem vindo</h1>
+      <p>Selecione um student pra começar</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<!-- login -->
+<div class="container h-80" *ngIf="!loginAllowed">
+  <div *ngIf="!showCadastrarScreen" class="row align-items-center h-100">
+    <div class="col-3 mx-auto">
+      <div class="text-center">
+        <img src="../assets/img/LOGO-FINAL.fw.png" id="profile-img" class="rounded-circle profile-img-card">
+        <p class="profile-name-card" id="profile-name"></p>
+        <div class="form-signin">
+          <input [(ngModel)]="user" type="text" id="user" class="form-control form-group" placeholder="usuario" required autofocus>
+          <input [(ngModel)]="senha" type="password" id="senha" class="form-control form-group" placeholder="senha">
+          <button class="btn btn-lg btn-primary btn-block btn-signin mb-3" type="submit" routerLink="/logo" 
+            (click)="login()">Entrar
+          </button>
+          <p class="cadastro">Não é cadastrado? <a class="cadLink" (click)="showCadastrar()">cadastre-se</a></p>
+          <div *ngIf="loginBloqueado" class="alert alert-danger" role="alert">
+              Usuario ou senha incorretos!!!
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showCadastrarScreen" class="row align-items-center h-100">
+    <div class="row linha form-cadastro align-items-center">
+      <div class="col-5 um">
+        <div class="text-center">
+          <!-- <img src="../assets/img/LOGO-FINAL.fw.png" id="profile-img" class="rounded-circle profile-img-card"> -->
+          <img src="../assets/img/LOGO-FINAL.fw.png" class="img-thumbnail avatar">
+          
+          <label>Selecione uma imagem:</label>
+          <input type="file" name="pic" accept="image/*">
+
+          <hr class="divi">
+
+          <input [(ngModel)]="user" type="text" id="user" class="form-control form-group" placeholder="usuario" required autofocus>
+          <input [(ngModel)]="senha" type="password" id="senha" class="form-control form-group" placeholder="senha">
+        </div>
+      </div>
+      <div class="col-7 dois">
+          <label>Genero:</label>
+          <input type="radio" name="gender" value="male" checked> Masculino
+          <input type="radio" name="gender" value="female"> Faminino
+          <input type="radio" name="gender" value="other"> Outros
+
+          <hr class="divi">
+
+          <label for="date">Nascimento:</label>
+          <input id="date" type="date">
+
+          <hr class="divi">
+
+          <label for="textarea">Objetivo:</label>
+          <textarea class="form-control" id="textarea" rows="7" maxlength="500" 
+          placeholder="Descreva o objetivo que deseja alcançar com Lord Fit"></textarea>
+
+          <hr class="divi">
+
+          <label >Peso:</label>
+          <input type="number" name="quantity" min="1" max="5">
+
+          <label >Altura:</label>
+          <input type="number" name="quantity" min="1" max="5">
+      </div>
+      <button class="btn btn-lg btn-primary btn-block btn-signin mb-3 mt-5" type="submit"
+        (click)="cadastrar()">Cadastrar
+      </button>
+    </div>
+    
+  </div>
+
+</div>
+
+<body *ngIf="loginAllowed">
+  <div class="navbar">
+    <app-nav></app-nav>
+  </div>
+
+  <div class="app-container">
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+  </div>
+  
+  <footer class="footer">
+    <span>&copy; 2019 - LordFit</span>
+  </footer>
+</body>

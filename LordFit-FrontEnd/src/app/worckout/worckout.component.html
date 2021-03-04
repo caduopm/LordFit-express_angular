@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-3">
+        <ul *ngIf="users">
+            <li *ngFor="let user of users.data" (click)="showUserInfo(user)"> 
+              <img [src]="user.avatar">
+              <p>{{ user.first_name }} {{ user.last_name }}</p>
+            </li>
+          </ul>
+    </div>
+
+     <!-- ====================================================================================================== -->
+    <div class="col-9" *ngIf="selectedUser">
+      <div class="bd-example mb-4 info card" *ngFor="let user of selectedUser.worckout; let indexbtn = index">
+        <div id="title mb-3">
+          <h2>Treino {{ user.tipo }}</h2>
+          <button class="cta btn-xs" (click)="showEditScreen(user)">Editar</button>
+        </div>
+        <!-- ======================================= nao edit ================================================= -->
+        <div *ngIf="!user.editScreen">
+          <div [id]="'carouselExampleCaptions' + indexbtn" class="carousel slide" data-ride="carousel" >
+            <ol class="carousel-indicators">
+              <li data-target="'#carouselExampleCaptions' + indexbtn" data-slide-to="idx"  [ngClass]="idx == 0 ? 'active' : ''" *ngFor="let user of user.exemplos; let idx = index"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'" *ngFor="let userWorckout of user.exemplos; let i = index">  
+                <img src="{{ userWorckout.img }}" class="d-block mx-auto">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ userWorckout.nome }}</h5>
+                  <p>{{ userWorckout.description }}</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev move" [href]="'#carouselExampleCaptions' + indexbtn" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next move" [href]="'#carouselExampleCaptions' + indexbtn" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <!-- =======================================  edit ================================================= -->
+        <div *ngIf="user.editScreen">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm cent" *ngFor="let userWorckout of user.exemplos; let i = index">
+                  <img  src="{{ userWorckout.img }}" alt="teste" class="img-thumbnail max-img center" data-toggle="modal" data-target="#exampleModalCenter">
+                  <br>
+                  <a class="btn-remove" (click)="remove(userWorckout, user)"><i class="fas fa-times-circle remove"></i></a>
+              </div>
+            </div>
+            <br>
+            <hr class="linha">
+            <br>
+            <div class="row">
+              <div class="col-sm cent" *ngFor="let item of worckoutList; let idx = index">
+                <img  src="{{ item.img }}" alt="teste" class="img-thumbnail max-img" >
+                <br>
+                <a class="btn-add" (click)="add(item)"><i class="fas fa-check-circle add"></i></a> 
+             </div>
+            </div>
+          </div>
+          <button class="cta btn-xs mt-2" (click)="save()">Salvar</button>
+
+
+          <!-- Modal -->
+          <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content modalAuto">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  <img src="https://picsum.photos/id/1062/600/600" alt="teste">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+    <!-- ======================================================================================================= -->
+    <div class="col-9" *ngIf="!selectedUser">
+      <div class="info card">
+        <h1>Bem vindo !!!!</h1>
+        <p>selecione um student pra comecar</p>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,95 @@
+.teste-col{
+    background-color: white;
+    color: black;
+}
+.content{
+    height: 100vh;
+    background-color: red;
+}
+
+// ----------------------------------------------------
+
+section
+{
+    padding: 200px;
+    padding-top: 20px;
+    color: white;
+    background: black;
+    margin: 0px;
+}
+
+body
+{
+    margin: 0px
+}
+
+p
+{
+    color: white;
+    
+}
+
+#faca-parte
+{
+    color: #A300D9;
+    font-family: 'Passion One', cursive;
+    font-size: 25px;
+    text-align: center;
+}
+
+.acesse
+{
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#ansiosos
+{
+    text-align: center;
+}
+
+ul li
+{
+    display: inline;
+    margin: 0px 50px 0px 0px;
+
+}
+
+li
+{
+    margin-left: 5px;
+}
+
+#tabela
+{
+    text-align: center;
+    font-style: normal;
+    font-size: smaller;
+    width: 100%;
+    margin-bottom : .5em;
+    table-layout: fixed;
+    text-align: center;
+  }
+
+
+    .fixarRodape {
+        bottom: 0;
+        position: static;
+        margin: 0%;
+        padding: 50px 0px 50px 0px;
+        width: 100%;
+        text-align: center;
+        background-color: #222222;
+    }
+
+    figure.logomarca-rodape
+    {
+        height: 5px;
+        width: 5px;
+    }
+
+    .welcome-img {
+        margin-top: 30px;
+        height: 100px;
+    }
